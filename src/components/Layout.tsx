@@ -4,9 +4,8 @@ import { Footer } from "./Footer";
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <div>
+    <div className="layout">
       <Header />
-      Layout
       {children}
       <Footer />
     </div>
