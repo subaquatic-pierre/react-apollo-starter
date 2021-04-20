@@ -35,12 +35,16 @@ export const Home: React.FC = () => {
   return (
     <div className="page">
       <h3>Home</h3>
-      <ul>
-        {data &&
-          data.todos.map((todo: ITodo) => {
-            return <Todo todo={todo} />;
-          })}
-      </ul>
+      <div className="todo-container">
+        <h3 className="todo-container__heading">Todos:</h3>
+        <div className="divider"></div>
+        <ul className="todo-container__list">
+          {data &&
+            data.todos.map((todo: ITodo) => {
+              return <Todo todo={todo} />;
+            })}
+        </ul>
+      </div>
     </div>
   );
 };

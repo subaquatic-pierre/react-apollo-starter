@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 body {
   padding: 0;
   margin: 0;
@@ -22,9 +24,6 @@ body {
   }
 }
 
-$theme-color: #2e8b57;
-$theme-color-light: #b8ddc8;
-
 .layout {
   height: 100vh;
   display: flex;
@@ -33,6 +32,9 @@ $theme-color-light: #b8ddc8;
 
 .page {
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .header {
@@ -81,6 +83,42 @@ $theme-color-light: #b8ddc8;
         cursor: pointer;
         box-shadow: 2px 2px 2px #2022217e;
       }
+    }
+  }
+}
+
+.divider {
+  height: 2px;
+  background-color: $theme-color;
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.todo-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  background-color: $paper-color;
+  max-width: 500px;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+
+  &__heading {
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    &__item {
+      h4 {
+        margin: 0;
+      }
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: rgb(243, 243, 243);
+      border-radius: 5px;
+      box-shadow: $box-shadow-small;
     }
   }
 }
