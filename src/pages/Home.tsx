@@ -1,9 +1,20 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_TODOS } from "../graphql/queries";
+import { Todo } from "../components/Todo";
+
+export interface ITodo {
+  title: String;
+  content: String;
+  completed: Boolean;
+}
 
 export const Home: React.FC = () => {
-  const { data, loading, error } = useQuery(GET_TODOS);
+  const { data, loading, error } = useQuery(GET_TODOS, {
+    onError: (error) => {
+      console.log(error.message);
+    },
+  });
 
   if (loading)
     return (
@@ -17,7 +28,7 @@ export const Home: React.FC = () => {
     return (
       <div className="page">
         <h3>Home</h3>
-        Error: {JSON.stringify(error.message)}
+        Error: {JSON.stringify(error)}
       </div>
     );
 
@@ -25,7 +36,10 @@ export const Home: React.FC = () => {
     <div className="page">
       <h3>Home</h3>
       <ul>
-        <li>{JSON.stringify(data)}</li>
+        {data &&
+          data.todos.map((todo: ITodo) => {
+            return <Todo todo={todo} />;
+          })}
       </ul>
     </div>
   );
