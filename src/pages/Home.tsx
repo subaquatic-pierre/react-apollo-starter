@@ -4,12 +4,14 @@ import { GET_TODOS } from "../graphql/queries";
 import { Todo } from "../components/Todo";
 
 export interface ITodo {
-  title: String;
-  content: String;
-  completed: Boolean;
+  id: number;
+  title: string;
+  content: string;
+  completed: boolean;
 }
 
 export const Home: React.FC = () => {
+  const [editTodoId, setEditTodoId] = React.useState(-1);
   const { data, loading, error } = useQuery(GET_TODOS, {
     onError: (error) => {
       console.log(error.message);
@@ -41,7 +43,14 @@ export const Home: React.FC = () => {
         <ul className="todo-container__list">
           {data &&
             data.todos.map((todo: ITodo) => {
-              return <Todo todo={todo} />;
+              return (
+                <Todo
+                  key={todo.id}
+                  setEditing={setEditTodoId}
+                  editing={editTodoId === todo.id}
+                  todo={todo}
+                />
+              );
             })}
         </ul>
       </div>

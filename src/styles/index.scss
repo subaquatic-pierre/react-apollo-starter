@@ -122,3 +122,13 @@ body {
     }
   }
 }
+
+.todo-form {
+  &__control {
+    background-color: white;
+  }
+
+  &__textarea {
+    border-radius: 5px;
+  }
+}
