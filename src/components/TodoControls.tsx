@@ -6,6 +6,7 @@ interface ITodoControls {
   handleSetEditingTodo: (id: number) => void;
   handleDeleteTodo: () => void;
   handleSubmitForm: () => void;
+  handleCancelCreateTodo?: () => void;
 }
 
 export const TodoControls: React.FC<ITodoControls> = ({
@@ -14,12 +15,20 @@ export const TodoControls: React.FC<ITodoControls> = ({
   handleDeleteTodo,
   handleSetEditingTodo,
   handleSubmitForm,
+  handleCancelCreateTodo,
 }) => {
+  const handleCancelButtonClick = () => {
+    if (handleCancelCreateTodo) {
+      handleCancelCreateTodo();
+    } else {
+      handleSetEditingTodo(-1);
+    }
+  };
   return (
     <div className="todo-container__button-container">
       {editing ? (
         <div className="todo-container__button-container__buttons">
-          <button onClick={() => handleSetEditingTodo(-1)}>Cancel</button>
+          <button onClick={handleCancelButtonClick}>Cancel</button>
           <button onClick={handleSubmitForm}>Submit</button>
         </div>
       ) : (

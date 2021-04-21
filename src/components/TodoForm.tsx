@@ -49,7 +49,9 @@ export const TodoForm: React.FC<IFormProps> = ({
   return (
     <form id="todo-form" className="todo-form">
       <div className="todo-form__control">
-        <label htmlFor="title-input">Title:</label>
+        <label className="todo-form__control__label" htmlFor="title-input">
+          Title:
+        </label>
         <input
           type="text"
           name="title"
@@ -59,7 +61,9 @@ export const TodoForm: React.FC<IFormProps> = ({
         />
       </div>
       <div className="todo-form__control">
-        <label htmlFor="content-input">Content:</label>
+        <label className="todo-form__control__label" htmlFor="content-input">
+          Content:
+        </label>
         <textarea
           id="content-input"
           name="content"
@@ -71,7 +75,9 @@ export const TodoForm: React.FC<IFormProps> = ({
         ></textarea>
       </div>
       <div className="todo-form__control">
-        Completed:{" "}
+        <label className="todo-form__control__label" htmlFor="completed">
+          Completed:
+        </label>
         <span>
           <div>
             <input

@@ -105,6 +105,10 @@ body {
 
   &__heading {
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__list {
@@ -139,6 +143,11 @@ body {
 .todo-form {
   &__control {
     background-color: white;
+
+    &__label {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
   }
 
   &__textarea {
