@@ -53,6 +53,7 @@ export const TodoForm: React.FC<IFormProps> = ({
           Title:
         </label>
         <input
+          autoFocus
           type="text"
           name="title"
           value={title}

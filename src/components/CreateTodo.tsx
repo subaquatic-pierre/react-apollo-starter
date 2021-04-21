@@ -1,12 +1,22 @@
 import React from "react";
+import { useMutation } from "@apollo/client";
 import { TodoControls } from "./TodoControls";
 import { TodoForm, IForm } from "./TodoForm";
+import { CREATE_TODO } from "../graphql/mutations";
 
 interface ICreateTodoProps {
   setCreateTodo: (value: boolean) => void;
 }
 
 export const CreateTodo: React.FC<ICreateTodoProps> = ({ setCreateTodo }) => {
+  const [createTodo] = useMutation(CREATE_TODO, {
+    onCompleted: (data) => {
+      window.location.reload();
+    },
+    onError: (error) => {
+      console.log(error.message);
+    },
+  });
   const [formData, setFormData] = React.useState<IForm>({
     title: "",
     content: "",
@@ -14,8 +24,13 @@ export const CreateTodo: React.FC<ICreateTodoProps> = ({ setCreateTodo }) => {
   });
 
   const submitForm = () => {
-    console.log(formData);
-    console.log("Handle submit form here");
+    createTodo({
+      variables: {
+        title: formData.title,
+        content: formData.content,
+        completed: formData.completed,
+      },
+    });
     setCreateTodo(false);
   };
 
