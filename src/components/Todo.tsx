@@ -1,4 +1,6 @@
+import { useMutation } from "@apollo/client";
 import React from "react";
+import { DELETE_TODO, EDIT_TODO } from "../graphql/mutations";
 import { ITodo } from "../pages/Home";
 import { TodoControls } from "./TodoControls";
 import { TodoForm, IForm } from "./TodoForm";
@@ -10,6 +12,24 @@ interface ITodoProps {
 }
 
 export const Todo: React.FC<ITodoProps> = ({ todo, editing, setEditing }) => {
+  const [editTodo] = useMutation(EDIT_TODO, {
+    onCompleted: (data) => {
+      window.location.reload();
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const [deleteTodo] = useMutation(DELETE_TODO, {
+    onCompleted: (data) => {
+      window.location.reload();
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const [formData, setFormData] = React.useState<IForm>({
     title: todo.title,
     content: todo.content,
@@ -18,12 +38,17 @@ export const Todo: React.FC<ITodoProps> = ({ todo, editing, setEditing }) => {
 
   const submitForm = () => {
     console.log(formData);
-    console.log("Handle submit form here");
+    editTodo({
+      variables: {
+        ...formData,
+        id: todo.id,
+      },
+    });
     setEditing(-1);
   };
 
-  const deleteTodo = () => {
-    console.log("Handle delete todo here");
+  const handleDeleteTodo = () => {
+    deleteTodo({ variables: { id: todo.id } });
   };
 
   return (
@@ -42,7 +67,7 @@ export const Todo: React.FC<ITodoProps> = ({ todo, editing, setEditing }) => {
         todoId={todo.id}
         handleSetEditingTodo={setEditing}
         handleSubmitForm={submitForm}
-        handleDeleteTodo={deleteTodo}
+        handleDeleteTodo={handleDeleteTodo}
       />
     </li>
   );
