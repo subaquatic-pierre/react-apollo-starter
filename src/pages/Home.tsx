@@ -18,6 +18,11 @@ export const Home: React.FC = () => {
     },
   });
 
+  const handleSetEditingTodo = (id: number) => {
+    console.log("Handle set editing todo here");
+    setEditTodoId(id);
+  };
+
   if (loading)
     return (
       <div className="page">
@@ -34,6 +39,8 @@ export const Home: React.FC = () => {
       </div>
     );
 
+  console.log(editTodoId);
+
   return (
     <div className="page">
       <h3>Home</h3>
@@ -46,7 +53,7 @@ export const Home: React.FC = () => {
               return (
                 <Todo
                   key={todo.id}
-                  setEditing={setEditTodoId}
+                  setEditing={handleSetEditingTodo}
                   editing={editTodoId === todo.id}
                   todo={todo}
                 />

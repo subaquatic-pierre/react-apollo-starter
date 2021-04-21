@@ -1,7 +1,7 @@
 import React from "react";
-import { ITodo } from "../../pages/Home";
+import { ITodo } from "../pages/Home";
 import { TodoControls } from "./TodoControls";
-import { TodoForm, IFormProps } from "./TodoForm";
+import { TodoForm, IForm } from "./TodoForm";
 
 interface ITodoProps {
   todo: ITodo;
@@ -9,22 +9,27 @@ interface ITodoProps {
   setEditing: (id: number) => void;
 }
 
-export const Todo: React.FC<ITodoProps> = ({
-  todo,
-  editing,
-  setEditing,
-  submitForm,
-}) => {
-  const [formData, setFormData] = React.useState<IFormProps>({
+export const Todo: React.FC<ITodoProps> = ({ todo, editing, setEditing }) => {
+  const [formData, setFormData] = React.useState<IForm>({
     title: todo.title,
     content: todo.content,
     completed: todo.completed,
   });
 
+  const submitForm = () => {
+    console.log(formData);
+    console.log("Handle submit form here");
+    setEditing(-1);
+  };
+
+  const deleteTodo = () => {
+    console.log("Handle delete todo here");
+  };
+
   return (
     <li className="todo-container__list__item">
       {editing ? (
-        <TodoForm {...formData} />
+        <TodoForm formData={formData} handleSetFormData={setFormData} />
       ) : (
         <>
           <h4>{todo.title}</h4>
@@ -33,9 +38,11 @@ export const Todo: React.FC<ITodoProps> = ({
         </>
       )}
       <TodoControls
+        editing={editing}
         todoId={todo.id}
-        handleSetEditing={setEditing}
+        handleSetEditingTodo={setEditing}
         handleSubmitForm={submitForm}
+        handleDeleteTodo={deleteTodo}
       />
     </li>
   );

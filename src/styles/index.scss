@@ -121,6 +121,19 @@ body {
       box-shadow: $box-shadow-small;
     }
   }
+
+  &__button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem 0;
+    &__buttons {
+      display: flex;
+
+      button {
+        margin: 0 0 0 1rem;
+      }
+    }
+  }
 }
 
 .todo-form {
@@ -130,5 +143,13 @@ body {
 
   &__textarea {
     border-radius: 5px;
+  }
+}
+
+.todo-form {
+  &__control {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
   }
 }

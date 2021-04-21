@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { ITodo } from "../../../pages/Home";
+import { ITodo } from "../../pages/Home";
 import { Todo } from "../Todo";
 
 const todo: ITodo = {
@@ -10,7 +10,7 @@ const todo: ITodo = {
   completed: false,
 };
 
-const setEditing = (id: number) => jest.mock(id);
+const setEditing = (id: any) => jest.fn(id);
 
 describe("Test Todo list item", () => {
   test("Renders correct todo item", () => {
