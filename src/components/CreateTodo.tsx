@@ -16,6 +16,7 @@ export const CreateTodo: React.FC<ICreateTodoProps> = ({ setCreateTodo }) => {
   const submitForm = () => {
     console.log(formData);
     console.log("Handle submit form here");
+    setCreateTodo(false);
   };
 
   const deleteTodo = () => {

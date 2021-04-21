@@ -17,7 +17,7 @@ describe("Test Todo list item", () => {
     const { getByText } = render(
       <Todo todo={todo} editing={false} setEditing={setEditing} />
     );
-    expect(getByText("The Best")).toBeInTheDocument();
+    expect(getByText("The best")).toBeInTheDocument();
     expect(getByText("The best content available")).toBeInTheDocument();
   });
 });

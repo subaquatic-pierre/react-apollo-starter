@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Header: React.FC = () => {
   return (
     <div className="header">
-      <h2>Header</h2>
+      <h2>Cool</h2>
       <nav className="header-nav">
         <ul className="header-nav__ul">
           <li>
