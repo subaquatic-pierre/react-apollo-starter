@@ -10,8 +10,17 @@ import { Layout } from "./components/Layout";
 import { BaseRouter } from "./routes";
 import "./styles/index.scss";
 
+const devEnv = process.env.REACT_APP_DEV_ENV;
+let uri;
+
+if (devEnv === "True") {
+  uri = "http://localhost:8000/graphql";
+} else {
+  uri = process.env.REACT_APP_URI;
+}
+
 const httpLink = new HttpLink({
-  uri: "http://localhost/graphql/",
+  uri: uri,
   credentials: "include",
 });
 
