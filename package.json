@@ -2,7 +2,8 @@
   "name": "react-apollo",
   "version": "1.0.0",
   "description": "Starter code for React Apollo Client application",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "homePage": "https://ballot-online.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/subaquatic-pierre/react-apollo.git"
