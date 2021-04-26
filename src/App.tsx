@@ -26,9 +26,9 @@ console.log(uri);
 const httpLink = new HttpLink({
   uri: uri,
   // credentials: "omit",
-  fetchOptions: {
-    mode: "no-cors",
-  },
+  // fetchOptions: {
+  //   mode: "no-cors",
+  // },
 });
 
 const client = new ApolloClient({
