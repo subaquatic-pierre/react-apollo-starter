@@ -15,6 +15,7 @@ export const authMiddleware = new ApolloLink((operation, forward) => {
 export const csrfMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
+      ...headers,
       "X-CSRFToken": Cookies.get("csrftoken"),
     },
   }));
