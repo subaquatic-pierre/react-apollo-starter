@@ -12,12 +12,15 @@ import "./styles/index.scss";
 
 const devEnv = process.env.REACT_APP_DEV_ENV;
 let uri;
+uri = process.env.REACT_APP_URI;
 
 if (devEnv === "True") {
   uri = "http://localhost:8000/graphql";
 } else {
   uri = process.env.REACT_APP_URI;
 }
+
+console.log(uri);
 
 const httpLink = new HttpLink({
   uri: uri,
