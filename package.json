@@ -27,6 +27,7 @@
     "@types/node": "^12.20.10",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/js-cookie": "^2.2.6",
     "@types/react-router-dom": "^5.1.7",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
@@ -64,6 +65,5 @@
     ]
   },
   "devDependencies": {
-    "@types/js-cookie": "^2.2.6"
   }
 }
