@@ -27,6 +27,8 @@
     "@types/node": "^12.20.10",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
@@ -60,8 +62,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/react-router-dom": "^5.1.7",
-    "dotenv": "^8.2.0"
-  }
+  "devDependencies": {}
 }

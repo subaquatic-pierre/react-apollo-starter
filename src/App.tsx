@@ -13,9 +13,10 @@ import "./styles/index.scss";
 const devEnv = process.env.REACT_APP_DEV_ENV;
 let uri;
 uri = process.env.REACT_APP_URI;
+// uri = "https://api.ballot-online.com/graphql/";
 
 if (devEnv === "True") {
-  uri = "http://localhost:8000/graphql";
+  uri = "http://localhost:8000/graphql/";
 } else {
   uri = process.env.REACT_APP_URI;
 }
@@ -24,7 +25,10 @@ console.log(uri);
 
 const httpLink = new HttpLink({
   uri: uri,
-  credentials: "include",
+  // credentials: "omit",
+  // fetchOptions: {
+  //   mode: "no-cors",
+  // },
 });
 
 const client = new ApolloClient({
